@@ -1,4 +1,4 @@
-# `bevy_parallaxation2d`
+## `bevy_parallaxation2d`
 
 <div align="center">
     
@@ -12,7 +12,7 @@ Crate providing simple 2D parallax layers in Bevy.
 
 ## Features
 * **`ParallaxPlugin`** - Plugin required for the parallax functionality.
-* **`ParallaxCamera`** - Component for marking the parallax camera. **Only one camera can use parallax layers**.
+* **`ParallaxCamera`** - Component for marking the parallax camera.
 * **`ParallaxLayer`** - Component for creating a parallax layer.
 * **`ParallaxFlags`** - Bit flags for defining attributes of a parallax layer.
 
@@ -55,7 +55,7 @@ fn setup(mut commands: Commands) {
 }
 ```
 
-This crate features an example you can run with
+This repository features an example you can run with
 ```ps
 cargo run --example mountains
 ```

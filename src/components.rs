@@ -3,6 +3,11 @@ use bevy::prelude::{Color, Component, Vec2};
 
 /// Marker component for the parallax camera.
 ///
+/// **Only one camera can use parallax layers**.
+///
+/// ## Panics
+/// The application will panic if multiple (or none) `ParallaxCamera` components are detected.
+///
 /// ## Examples
 /// ```
 /// # use bevy::prelude::{Commands, Camera2dBundle};
