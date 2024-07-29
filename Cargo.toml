@@ -1,0 +1,23 @@
+[package]
+name = "bevy_parallaxation2d"
+version = "0.1.0"
+edition = "2021"
+authors = ["wilzet"]
+categories = ["game-development"]
+description = "Crate providing simple 2D parallax layers in Bevy."
+exclude = [".github", "assets/*", "examples/*"]
+keywords = ["bevy", "game", "gamedev", "parallax"]
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/wilzet/bevy_parallaxation2d"
+
+[dependencies]
+bevy = { version = "0.13.0", default-features = false, features = ["bevy_sprite"] }
+bitflags = "2.6.0"
+
+[dev-dependencies]
+bevy = { version = "0.13.0", default-features = false, features = ["bevy_winit", "x11", "multi-threaded", "png"] }
+bevy-inspector-egui = { version = "0.24.0", default-features = false }
+
+[[example]]
+name = "mountains"
+path = "examples/mountains.rs"
