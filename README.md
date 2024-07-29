@@ -1,5 +1,13 @@
 # `bevy_parallaxation2d`
 
+<div align="center">
+    
+  [![License](https://img.shields.io/badge/license-MIT%2FApache-blue.svg)](https://github.com/wilzet/bevy_parallaxation2d)
+  [![Crates.io](https://img.shields.io/crates/v/bevy_parallaxation2d.svg)](https://crates.io/crates/bevy_parallaxation2d)
+  [![Downloads](https://img.shields.io/crates/d/bevy_parallaxation2d.svg)](https://crates.io/crates/bevy_parallaxation2d)
+  [![CI](https://github.com/wilzet/bevy_parallaxation2d/workflows/CI/badge.svg)](https://github.com/wilzet/bevy_parallaxation2d/actions)
+</div>
+
 Crate providing simple 2D parallax layers in Bevy.
 
 ## Features
@@ -18,6 +26,7 @@ use bevy_parallaxation2d::prelude::*;
 
 fn main() {
     App::new()
+        // Use parallax plugin
         .add_plugins((DefaultPlugins, ParallaxPlugin::default()))
         .add_systems(Startup, setup)
         .run();
