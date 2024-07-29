@@ -88,7 +88,7 @@ impl Depth {
     pub(crate) fn to_world_with_factor(self, context: &ParallaxContext) -> Self {
         match self.0 {
             Parallax(depth) => {
-                let depth = context.convert_depth(depth) * context.scale();
+                let depth = context.convert_depth(depth);
                 let factor = context.calculate_depth_factor(depth);
                 Self(WorldWithFactor(depth, factor))
             }

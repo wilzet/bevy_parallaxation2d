@@ -51,19 +51,11 @@ impl ParallaxContext {
     pub fn new(mut config: ParallaxConfig) -> Self {
         // Adjust the near and far depths relative to the neutral depth if needed.
         if config.near_depth < config.far_depth {
-            config.near_depth =
-                ParallaxConfig::convert_depth(config, config.near_depth) * config.scale;
-            config.far_depth =
-                ParallaxConfig::convert_depth(config, config.far_depth) * config.scale;
+            config.near_depth = ParallaxConfig::convert_depth(config, config.near_depth);
+            config.far_depth = ParallaxConfig::convert_depth(config, config.far_depth);
         }
 
         Self(config)
-    }
-
-    #[inline]
-    #[must_use]
-    pub fn scale(&self) -> f32 {
-        self.0.scale
     }
 
     /// Converts a given depth between parallax depth and world depth
@@ -129,7 +121,7 @@ mod tests {
             far_depth: 1.0,
         });
 
-        assert_eq!(context.scale(), -5.0);
+        assert_eq!(context.0.scale, -5.0);
         assert_eq!(context.0.near_depth, -1.0);
         assert_eq!(context.0.neutral_depth, -1.0);
         assert_eq!(context.0.far_depth, -2.0);
