@@ -1,9 +1,9 @@
-//! # `bevy_parallaxation2d`
+//! ## `bevy_parallaxation2d`
 //! Crate providing simple 2D parallax layers in Bevy.
 //!
 //! ## Features
 //! * **[`ParallaxPlugin`](crate::plugin::ParallaxPlugin)** - Plugin required for the parallax functionality.
-//! * **[`ParallaxCamera`](crate::components::ParallaxCamera)** - Component for marking the parallax camera. **Only one camera can use parallax layers**.
+//! * **[`ParallaxCamera`](crate::components::ParallaxCamera)** - Component for marking the parallax camera.
 //! * **[`ParallaxLayer`](crate::components::ParallaxLayer)** - Component for creating a parallax layer.
 //! * **[`ParallaxFlags`](crate::flags::ParallaxFlags)** - Bit flags for defining attributes of a parallax layer.
 //!
@@ -33,18 +33,18 @@
 //!     // * Foreground at the top of the screen.
 //!     commands.spawn_batch(vec![
 //!         ParallaxLayer {
-//!             image: "images/main_background.png",
+//!             image: "main_background.png",
 //!             depth: 80.0.into(),
 //!             flags: ParallaxFlags::REPEAT_X_AXIS | ParallaxFlags::REPEAT_Y_AXIS,
 //!             ..default()
 //!         },
 //!         ParallaxLayer {
-//!             image: "images/hills_background.png",
+//!             image: "hills_background.png",
 //!             depth: 40.0.into(),
 //!             ..default()
 //!         },
 //!         ParallaxLayer {
-//!             image: "images/branches_foreground.png",
+//!             image: "branches_foreground.png",
 //!             depth: (-5.0).into(),
 //!             flags: ParallaxFlags::REPEAT_X_AXIS | ParallaxFlags::OFFSET_CAMERA_TOP,
 //!             ..default()
