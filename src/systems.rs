@@ -17,11 +17,19 @@ use bevy::{
 pub(crate) fn initial_load_parallax_layers(
     mut commands: Commands,
     mut materials: ResMut<Assets<ParallaxMaterial>>,
-    new_parallax_layers_query: Query<(Entity, &ParallaxLayer), Added<ParallaxLayer>>,
+    new_parallax_layers_query: Query<
+        (Entity, &ParallaxLayer, Option<&Transform>),
+        Added<ParallaxLayer>,
+    >,
     asset_server: Res<AssetServer>,
     parallax_mesh: Res<ParallaxMesh>,
 ) {
-    for (entity, parallax) in new_parallax_layers_query.iter() {
+    for (entity, parallax, transform) in new_parallax_layers_query.iter() {
+        let transform = match transform {
+            Some(transform) => *transform,
+            None => Transform::default(),
+        };
+
         commands
             .entity(entity)
             .insert((
@@ -36,6 +44,7 @@ pub(crate) fn initial_load_parallax_layers(
                         asset_server.load(parallax.image),
                         parallax.color,
                     )),
+                    transform,
                     ..default()
                 },
             ))
@@ -132,7 +141,8 @@ pub(crate) fn process_new_parallax_layer_data(
             }
         }
 
-        transform.translation = parallax.offset.extend(parallax.depth.depth());
+        let depth = parallax.depth.depth() + transform.translation.z;
+        transform.translation = parallax.offset.extend(depth);
         transform.scale = scaled_image_dimensions.extend(1.0);
 
         material
@@ -155,7 +165,7 @@ pub(crate) fn move_parallax_layers(
         let translation =
             translation_with_depth_and_flags(camera_translation, parallax.depth, parallax.flags);
 
-        transform.translation = (translation + parallax.offset).extend(parallax.depth.depth());
+        transform.translation = (translation + parallax.offset).extend(transform.translation.z);
     }
 }
 
