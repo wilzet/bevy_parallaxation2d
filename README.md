@@ -10,7 +10,7 @@
 
 Crate providing simple 2D parallax layers in Bevy.
 
-## Features
+## In this crate:
 * **`ParallaxPlugin`** - Plugin required for the parallax functionality.
 * **`ParallaxCamera`** - Component for marking the parallax camera.
 * **`ParallaxLayer`** - Component for creating a parallax layer.
