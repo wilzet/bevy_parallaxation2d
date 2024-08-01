@@ -56,7 +56,7 @@ pub struct ParallaxCamera;
 ///     commands.spawn_batch(layers);
 /// }
 /// ```
-/// 
+///
 /// ## Note
 /// It is not necessary to provide a `TransformBundle` to the parallax layer but if you do,
 /// the initialisation process only takes into account the z-value as a depth offset without
