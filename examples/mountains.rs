@@ -92,8 +92,10 @@ fn toggle_back_layer(
         if *is_despawned {
             commands.spawn(ParallaxLayer {
                 image: "mountains_background.png",
-                depth: 84.0.into(),
-                ..default()
+                color: Color::DARK_GRAY,
+                depth: 90.0.into(),
+                offset: Vec2::Y * 10.0,
+                flags: ParallaxFlags::OFFSET_CAMERA_TOP,
             });
         } else {
             commands.despawn_back_layer();
