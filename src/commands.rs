@@ -14,7 +14,7 @@ impl<'w, 's> ParallaxDespawnCommands for Commands<'w, 's> {
         self.add(|world: &mut World| {
             let mut parallax_layers_query = world.query::<(Entity, &ParallaxLayerData)>();
             let (mut front_layer_entity, mut min_depth) = (None, Depth::from_world(f32::MIN, 1.0));
-            for (entity, parallax) in parallax_layers_query.iter(&world) {
+            for (entity, parallax) in parallax_layers_query.iter(world) {
                 if parallax.depth > min_depth {
                     (front_layer_entity, min_depth) = (Some(entity), parallax.depth);
                 }
@@ -30,7 +30,7 @@ impl<'w, 's> ParallaxDespawnCommands for Commands<'w, 's> {
         self.add(|world: &mut World| {
             let mut parallax_layers_query = world.query::<(Entity, &ParallaxLayerData)>();
             let (mut back_layer_entity, mut max_depth) = (None, Depth::from_world(f32::MAX, 1.0));
-            for (entity, parallax) in parallax_layers_query.iter(&world) {
+            for (entity, parallax) in parallax_layers_query.iter(world) {
                 if parallax.depth < max_depth {
                     (back_layer_entity, max_depth) = (Some(entity), parallax.depth);
                 }
