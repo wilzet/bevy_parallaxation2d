@@ -1,6 +1,7 @@
 use crate::{components::ParallaxLayerData, depth::Depth};
 use bevy::prelude::{Commands, Entity, World};
 
+/// Trait for extending Bevy [`Commands`] to despawn parallax layers.
 pub trait ParallaxDespawnCommands {
     /// Despawn the front most parallax layer
     fn despawn_front_layer(&mut self);
