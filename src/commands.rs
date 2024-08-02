@@ -192,7 +192,7 @@ mod tests {
         }
 
         // Despawn front
-        Commands::new(&mut command_queue, &world).despawn_back_layer();
+        Commands::new(&mut command_queue, &world).despawn_front_layer();
         command_queue.apply(&mut world);
 
         let result = world
