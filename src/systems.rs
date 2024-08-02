@@ -83,9 +83,10 @@ pub(crate) fn process_new_parallax_layer_data(
             .get_mut(material)
             .expect("Parallax material should be loaded");
 
-        let image = images
-            .get_mut(material.image_handle())
-            .expect("Image should be loaded");
+        let mut image = images
+            .get(material.image_handle())
+            .expect("Image should be loaded")
+            .clone();
 
         let image_dimensions = image.size_f32();
 
@@ -146,6 +147,7 @@ pub(crate) fn process_new_parallax_layer_data(
         transform.scale = scaled_image_dimensions.extend(1.0);
 
         material
+            .set_image_handle(images.add(image))
             .set_repeat_scale(scaled_image_dimensions / image_dimensions)
             .set_depth(depth_factor / scaled_image_dimensions)
             .set_offset(parallax.offset);

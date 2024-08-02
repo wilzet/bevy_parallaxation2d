@@ -41,6 +41,12 @@ impl ParallaxMaterial {
     }
 
     #[inline]
+    pub fn set_image_handle(&mut self, image: Handle<Image>) -> &mut Self {
+        self.texture = image;
+        self
+    }
+
+    #[inline]
     pub fn set_repeat_scale(&mut self, repeat_scale: Vec2) -> &mut Self {
         self.repeat_scale = repeat_scale;
         self
