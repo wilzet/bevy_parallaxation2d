@@ -53,6 +53,7 @@
 //! }
 //! ```
 
+mod commands;
 mod components;
 mod flags;
 mod material;
@@ -81,6 +82,7 @@ pub mod depth;
 /// components, and bitflags necessary for implementing parallax effects.
 pub mod prelude {
     pub use crate::{
+        commands::ParallaxDespawnCommands,
         components::{ParallaxCamera, ParallaxLayer},
         flags::ParallaxFlags,
         plugin::ParallaxPlugin,

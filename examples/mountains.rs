@@ -4,6 +4,7 @@ use bevy_parallaxation2d::prelude::*;
 
 // This example demonstrates how to set up and use the `bevy_parallaxation2d`
 // crate in a Bevy application, including camera movement and parallax layers.
+// There is also a simple demonstration of how to despawn a parallax layer.
 
 const CAMERA_MOVE_SPEED: f32 = 5.0;
 const CAMERA_HEIGHT: f32 = 180.0;
@@ -17,7 +18,7 @@ fn main() {
             ParallaxPlugin::default(),
         ))
         .add_systems(Startup, setup)
-        .add_systems(Update, move_camera)
+        .add_systems(Update, (move_camera, toggle_back_layer))
         .run();
 }
 
@@ -73,4 +74,24 @@ fn move_camera(
     let move_direction = Vec2::new(right - left, up - down) * CAMERA_MOVE_SPEED;
 
     camera_transform.translation += move_direction.extend(0.0);
+}
+
+fn toggle_back_layer(
+    mut commands: Commands,
+    input: Res<ButtonInput<KeyCode>>,
+    mut is_despawned: Local<bool>,
+) {
+    if input.just_pressed(KeyCode::Space) {
+        if *is_despawned {
+            commands.spawn(ParallaxLayer {
+                image: "mountains_background.png",
+                depth: 84.0.into(),
+                ..default()
+            });
+        } else {
+            commands.despawn_back_layer();
+        }
+
+        *is_despawned = !*is_despawned;
+    }
 }
