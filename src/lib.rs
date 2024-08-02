@@ -64,7 +64,7 @@ mod systems;
 /// The `depth` module provides extra functions and options for creating and
 /// managing [`Depth`](crate::depth::Depth) values used in parallax effects.
 ///
-/// The recommend way to use [`Depth`](crate::depth::Depth) values is simply
+/// The recommended way to use [`Depth`](crate::depth::Depth) values is simply
 /// by using `.into()` on an [`f32`] as in the example:
 /// ```
 /// # use bevy::prelude::default;
